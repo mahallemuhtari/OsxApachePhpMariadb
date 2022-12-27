@@ -367,7 +367,18 @@ nano /usr/local/etc/httpd/httpd.conf
 dosyasındaki `LoadModule vhost_alias_module lib/httpd/modules/mod_vhost_alias.so` yorum satırını `#` Kaldırın. 
 
 Ve:
+a) Osx Apple Silicon İşlemci: Include başındaki # kaldırın
+```bash
+# Virtual hosts
+Include /opt/homebrew/etc/httpd/extra/httpd-vhosts.conf
+```
+b) İntel İşlemci : Include başındaki # kaldırın
+```bash
+# Virtual hosts
+Include /usr/local/etc/httpd/extra/httpd-vhosts.conf
+```
 
+Ardından :
 a) Osx Apple Silicon İşlemci
 ```bash
 nano /opt/homebrew/etc/httpd/extra/httpd-vhosts.conf
