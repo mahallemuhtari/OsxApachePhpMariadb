@@ -98,7 +98,7 @@ brew install httpd
 brew services start httpd
 ```
 
-http://localhost:8080 Adresine girdiğiniz zaman `It Works!` yazan yazı ile karşılaşırsanız buraya kadar her şey güzel. !!!! Dikkat phpmyadmin docker çalıştığı için bu sayfasyı göremeyebilme imkanınız var
+http://localhost:8080 Adresine girdiğiniz zaman `It Works!` yazan yazı ile karşılaşırsanız buraya kadar her şey güzel. !!!! Dikkat phpmyadmin docker çalıştığı için bu sayfasyı göremeyebilme imkanınız var. Bundan Dolayı Sonraki Adım "İlk Olarak 8080 Portunu 80 olarak değiştireceğiz" Geçtikten Sonra http://localhost yazarak erişebilirsiniz. 
 
 
 Apache Log Dosyası Okuma
