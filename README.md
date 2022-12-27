@@ -11,7 +11,7 @@ Sırasıyla:
 4-HomeBrew Üzerine Apache Kurduk ve Ayarlamaları Yaptık
 ```
 
-# Docker Kurulumu
+# Docker Kurulumu ve Database Kurulumu
 
  1. https://www.docker.com/products/docker-desktop/ 'adresinden docker'ı indir.
 
@@ -183,7 +183,7 @@ DocumentRoot "/Users/your_user/Sites"
     AllowOverride All
 ```
 
-4. `LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so` modulünün başındaki # kaldırın.
+4. `LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so` modulünün başındaki `#` kaldırın.
 
 ## Kullanıcı Grupları ve İzinleri ayarlayın
 `your_user` olan yerleri kullanıcı adınız olarak değiştirin
@@ -191,3 +191,239 @@ DocumentRoot "/Users/your_user/Sites"
 User your_user
 Group staff
 ```
+
+
+## Sunucu Adı 
+`#ServerName www.example.com:8080` olan yeri aşağıdaki gibi değiştirin
+```sh
+ServerName localhost
+```
+
+
+## Sitelerin Bulunduğu Klasörü Ayarlayın
+Terminali Açın ve bu kodları girin
+```sh
+mkdir ~/Sites
+echo "<h1>Hello</h1>" > ~/Sites/index.html
+```
+
+Kaydedin ve http://localhost ' a girin eğer açılmazsa cmd+shift+r ye basın :8080 tarayıcı önbelleğini temizlesin
+
+
+
+## Php Kurulumu
+@shivammathur paketini kullanacağız bu paketin içerisinde 8.2 dahil bir çok sürüm vardır
+```sh
+brew tap shivammathur/php
+```
+
+İstediğiniz Php Sürümünü Kurunuz.
+```sh
+brew install shivammathur/php/php@7.0
+brew install shivammathur/php/php@7.1
+brew install shivammathur/php/php@7.2
+brew install shivammathur/php/php@7.3
+brew install shivammathur/php/php@7.4
+brew install shivammathur/php/php@8.0
+brew install shivammathur/php/php@8.1
+brew install shivammathur/php/php@8.2
+```
+
+Php.ini Dosyaları ve Yapılandırma ~ Timezone ve Bellek ayarlarını yapılandıravilirsiniz.
+-
+1. Dosyaların Konumları
+a) Osx Apple Silicon İşlemci
+```bash
+/opt/homebrew/etc/php/7.0/php.ini
+/opt/homebrew/etc/php/7.1/php.ini
+/opt/homebrew/etc/php/7.2/php.ini
+/opt/homebrew/etc/php/7.3/php.ini
+/opt/homebrew/etc/php/7.4/php.ini
+/opt/homebrew/etc/php/8.0/php.ini
+/opt/homebrew/etc/php/8.1/php.ini
+/opt/homebrew/etc/php/8.2/php.ini
+```
+b) İntel İşlemci
+```bash
+/usr/local/etc/php/7.0/php.ini
+/usr/local/etc/php/7.1/php.ini
+/usr/local/etc/php/7.2/php.ini
+/usr/local/etc/php/7.3/php.ini
+/usr/local/etc/php/7.4/php.ini
+/usr/local/etc/php/8.0/php.ini
+/usr/local/etc/php/8.1/php.ini
+/usr/local/etc/php/8.2/php.ini
+```
+
+2. Php Bağlamak 
+
+burada istediğiniz php sürümünü girebilirsiniz ve istediğiniz sürüme geçiş yapabilirsiniz
+```bash
+brew unlink php && brew link --overwrite --force php@8.1
+```
+Doğrulamak için bu komutu girebilirsiniz
+
+```bash
+php -v
+```
+Çıktı:
+```bash
+PHP 8.1.12 (cli) (built: Nov  2 2022 15:48:23) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.1.12, Copyright (c) Zend Technologies
+    with Zend OPcache v8.1.12, Copyright (c), by Zend Technologies
+```
+
+## Apache Php Konfigure Etme
+
+Apache Konfigure Etme başlığındaki httpd.conf dosyasını açın ve `LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so` satırının hemen altına 
+
+```bash
+#LoadModule php7_module /opt/homebrew/opt/php@7.0/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /opt/homebrew/opt/php@7.1/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /opt/homebrew/opt/php@7.2/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /opt/homebrew/opt/php@7.3/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /opt/homebrew/opt/php@7.4/lib/httpd/modules/libphp7.so
+#LoadModule php_module /opt/homebrew/opt/php@8.0/lib/httpd/modules/libphp.so
+LoadModule php_module /opt/homebrew/opt/php@8.1/lib/httpd/modules/libphp.so
+#LoadModule php_module /opt/homebrew/opt/php@8.2/lib/httpd/modules/libphp.so
+```
+bunu ekleyin. İstediğiniz Zaman girip güncelleyebilirsiniz.
+
+Ardından `<IfModule dir_module>` bölümünü bulun 
+
+Büyük Olasıkla Bu Şekildedir:
+
+```bash
+<IfModule dir_module>
+    DirectoryIndex index.html
+</IfModule>
+```
+
+Bu Sekmeyi Bulun ve Bu Şekilde Değiştirin
+```bash
+<IfModule dir_module>
+    DirectoryIndex index.php index.html
+</IfModule>
+
+<FilesMatch \.php$>
+    SetHandler application/x-httpd-php
+</FilesMatch>
+```
+
+Dosyayı Kaydedin ve Apache'yi Yeniden Başlatın
+
+
+```bash
+brew services stop httpd
+brew services start httpd
+```
+
+### Php Kurulumunu Test Edelim
+
+Terminale Aşağıdaki Kodu girin
+
+```bash
+echo "<?php phpinfo();" > ~/Sites/info.php
+
+```
+
+http://localhost/info.php adresine girdiğinizde php bilgi sayfası sizleri karşılayacaktır.
+
+## Apache Virtual Host Uapılandırılması
+
+
+## Apache Konfigure Etme 
+
+a) Osx Apple Silicon İşlemci
+```bash
+nano /opt/homebrew/etc/httpd/httpd.conf
+```
+b) İntel İşlemci
+```bash
+nano /usr/local/etc/httpd/httpd.conf
+```
+dosyasındaki `LoadModule vhost_alias_module lib/httpd/modules/mod_vhost_alias.so` yorum satırını `#` Kaldırın. 
+
+Ve:
+
+a) Osx Apple Silicon İşlemci
+```bash
+nano /opt/homebrew/etc/httpd/extra/httpd-vhosts.conf
+```
+b) İntel İşlemci
+```bash
+nano /usr/local/etc/httpd/extra/httpd-vhosts.conf
+```
+
+dosyasını açın en alta satıra `your_user` Kısmını kullanıcı adını yaparak..
+
+Default İçin:
+
+```bash
+
+<VirtualHost *:80>
+    DocumentRoot "/Users/your_user/Sites"
+    ServerName localhost
+</VirtualHost>
+
+```
+
+Diğer Sistemler İçin :
+
+```bash
+
+<VirtualHost *:80>
+    DocumentRoot "/Users/your_user/Sites/another-site"
+    ServerName anothersite.dna
+</VirtualHost>
+```
+
+Örnek Bir Laravel Uygulması İçin :
+
+
+```bash
+<VirtualHost *:80>
+    ServerName laravel.dna
+    DocumentRoot /Users/your_user/Sites/laravel/public
+    <Directory   /Users/your_user/Sites/laravel/public>
+        Require all granted
+        AllowOverride All
+    </Directory>
+</VirtualHost>
+            
+```
+Bütün Bunları Bu Şekilde Altalta Ekleyebilirsiniz.
+
+
+## Hosts Dosyasını Konfigure Etme 
+
+Terminali Açın
+
+```bash
+sudo nano /etc/hosts
+            
+```
+Dosyasının En Al Satırına 
+
+```bash
+.
+.
+.
+127.0.0.1 laravel.dna
+127.0.0.1 anothersite.dna
+```
+
+şeklinde ekleyerek gidin.
+
+
+Apache Yeniden Başlatın
+-
+```bash
+brew services stop httpd
+brew services start httpd
+```
+
+Buraya Kadar Genel Anlamıyla Her Şeyi Kurmuş Olduk Bundan Sonra
+
+`Yarn` `Npm` `Nodejs vs vs` Kurulumuyla Alakalı Yazmaya Devam Edeceğim.
