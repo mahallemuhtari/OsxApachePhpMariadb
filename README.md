@@ -9,6 +9,8 @@ Sırasıyla:
 2-Docker Üzerinden Mariadb ve PhpMyAdmin'i Kurduk
 3-HomeBrew Kurduk
 4-HomeBrew Üzerine Apache Kurduk ve Ayarlamaları Yaptık
+5-Php Kurulumunu Yaptık
+6-Virtual Host Ayarlarını Yaptık
 ```
 
 # Docker Kurulumu ve Database Kurulumu
