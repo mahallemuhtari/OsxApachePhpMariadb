@@ -265,7 +265,7 @@ burada istediğiniz php sürümünü girebilirsiniz ve istediğiniz sürüme ge�
 ```bash
 brew unlink php && brew link --overwrite --force php@8.1
 ```
-Doğrulamak için bu komutu girebilirsiniz
+Doğrulamak için bu komutu `yeni bir terminal açarak` girebilirsiniz. Bulunduğunuz Terminalde Kaynak Olarak Alamadığı İçin Hata Verebilir
 
 ```bash
 php -v
