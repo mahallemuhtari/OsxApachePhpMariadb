@@ -300,14 +300,14 @@ LoadModule php_module /opt/homebrew/opt/php@8.1/lib/httpd/modules/libphp.so
 İntel İşlemci İçin :
 
 ```bash
-#LoadModule php7_module /opt/homebrew/opt/php@7.0/lib/httpd/modules/libphp7.so
-#LoadModule php7_module /opt/homebrew/opt/php@7.1/lib/httpd/modules/libphp7.so
-#LoadModule php7_module /opt/homebrew/opt/php@7.2/lib/httpd/modules/libphp7.so
-#LoadModule php7_module /opt/homebrew/opt/php@7.3/lib/httpd/modules/libphp7.so
-#LoadModule php7_module /opt/homebrew/opt/php@7.4/lib/httpd/modules/libphp7.so
-#LoadModule php_module /opt/homebrew/opt/php@8.0/lib/httpd/modules/libphp.so
-LoadModule php_module /opt/homebrew/opt/php@8.1/lib/httpd/modules/libphp.so
-#LoadModule php_module /opt/homebrew/opt/php@8.2/lib/httpd/modules/libphp.so
+#LoadModule php7_module /usr/local/opt/php@7.0/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /usr/local/opt/php@7.1/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /usr/local/opt/php@7.2/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /usr/local/opt/php@7.3/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /usr/local/opt/php@7.4/lib/httpd/modules/libphp7.so
+#LoadModule php_module /usr/local/opt/php@8.0/lib/httpd/modules/libphp.so
+LoadModule php_module /usr/local/opt/php@8.1/lib/httpd/modules/libphp.so
+#LoadModule php_module /usr/local/opt/php@8.2/lib/httpd/modules/libphp.so
 ```
 bunu ekleyin. İstediğiniz Zaman girip güncelleyebilirsiniz.
 
