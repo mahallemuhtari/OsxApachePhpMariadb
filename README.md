@@ -181,8 +181,10 @@ DocumentRoot "/Users/your_user/Sites"
     AllowOverride All
 ```
 
-4. `LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so` modulünün başındaki `#` kaldırın.
-
+4.
+```sh
+`LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so` modulünün başındaki `#` kaldırın.
+```
 ## Kullanıcı Grupları ve İzinleri ayarlayın
 `your_user` olan yerleri kullanıcı adınız olarak değiştirin
 ```sh
