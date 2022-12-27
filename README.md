@@ -284,6 +284,8 @@ Zend Engine v4.1.12, Copyright (c) Zend Technologies
 
 Apache Konfigure Etme başlığındaki httpd.conf dosyasını açın ve `LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so` satırının hemen altına 
 
+Apple İşlemci İçin :
+
 ```bash
 #LoadModule php7_module /opt/homebrew/opt/php@7.0/lib/httpd/modules/libphp7.so
 #LoadModule php7_module /opt/homebrew/opt/php@7.1/lib/httpd/modules/libphp7.so
@@ -293,6 +295,19 @@ Apache Konfigure Etme başlığındaki httpd.conf dosyasını açın ve `LoadMod
 #LoadModule php_module /opt/homebrew/opt/php@8.0/lib/httpd/modules/libphp.so
 LoadModule php_module /opt/homebrew/opt/php@8.1/lib/httpd/modules/libphp.so
 #LoadModule php_module /opt/homebrew/opt/php@8.2/lib/httpd/modules/libphp.so
+```
+
+İntel İşlemci İçin :
+
+```bash
+#LoadModule php7_module /opt/homebrew/opt/php@7.0/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /opt/homebrew/opt/php@7.1/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /opt/homebrew/opt/php@7.2/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /opt/homebrew/opt/php@7.3/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /opt/homebrew/opt/php@7.4/lib/httpd/modules/libphp7.so
+#LoadModule php_module /opt/homebrew/opt/php@8.0/lib/httpd/modules/libphp.so
+#LoadModule php_module /opt/homebrew/opt/php@8.1/lib/httpd/modules/libphp.so
+LoadModule php_module /opt/homebrew/opt/php@8.2/lib/httpd/modules/libphp.so
 ```
 bunu ekleyin. İstediğiniz Zaman girip güncelleyebilirsiniz.
 
