@@ -197,6 +197,12 @@ Group staff
 ServerName localhost
 ```
 
+Apache Yeniden başlatalım
+-
+```bash
+brew services stop httpd
+brew services start httpd
+```
 
 ## Sitelerin Bulunduğu Klasörü Ayarlayın
 Terminali Açın ve bu kodları girin
