@@ -22,7 +22,7 @@ Sırasıyla:
  3. Terminalini Aç ve mariadb imajinı indir
 
 ```bash 
-docker pull mariadb:latest
+docker pull mariadb
 ```
 
  4. "db" yazan yer docker'ın ismi "mypass123" yazan yer root parolası
