@@ -55,7 +55,7 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ``` 
 
-3. HomeBrew Cli Ekleme
+### 3. HomeBrew Cli Ekleme
 a) Osx Apple Silicon İşlemci
 ```bash
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -88,10 +88,6 @@ sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>
 
 ```bash 
 brew install httpd
-```
-Çıktı:
-```bash 
-🍺  /usr/local/Cellar/httpd/2.4.54_1: 1,662 files, 31.9MB
 ```
 
 
