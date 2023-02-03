@@ -1,4 +1,4 @@
-# HomeBrew Apache Php Node Npm and Docker vs vs OSX
+# Mac Os X Docker + WebServer İlk Kurulumlar
 
 Merhaba Burada Basit Olarak Sürekli Arkadaşlarla Kurulum İçin Kaynakları Gezmeyelim Diye Oluşturduğumuz Dokümanı Yayınladım. Fazlasıyla Amatör Olsa da Kendimiz İçin çok iş gören bir yazı yanlışımız olduysa şimiden kusura bakmayın.
 
